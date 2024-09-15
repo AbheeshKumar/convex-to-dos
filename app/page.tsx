@@ -25,9 +25,9 @@ export default function Home() {
       <ul className="space-y-4">
         {todos.map(({ title, description, completed }, index) => (
           <ToDoItem
+            key={index}
             title={title}
             description={description}
-            index={index}
             completed={completed}
             onCompleteChanged={(newValue) => {
               setTodos((prev) => {
@@ -64,21 +64,16 @@ function ToDoItem({
   description,
   completed,
   onCompleteChanged,
-  index,
   onRemove,
 }: {
   title: string;
   description: string;
   completed: boolean;
-  index: number;
   onCompleteChanged: (newValue: boolean) => void;
   onRemove: () => void;
 }) {
   return (
-    <li
-      key={index}
-      className="w-full items-center flex gap-2 border rounded p-2"
-    >
+    <li className="w-full items-center flex gap-2 border rounded p-2">
       <input
         type="checkbox"
         title="Activity checkbox"
